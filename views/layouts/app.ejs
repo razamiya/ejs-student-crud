@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css"/>
+    <link href="/css/datatables.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href=" /css/style.css ">
+    <title>Student Data</title>
+</head>
+<body>
+    
+
+
+    <%- body  %> 
+
+    <script src="/js/jquery-3.6.1.min.js"></script>
+    <script src="/js/datatables.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <script>
+        // Data table
+        $('.soro-data-table').DataTable();
+
+        // Preview data lode 
+        const student_photo = document.querySelector('#uplode-student-photo');
+        const pre_photo = document.querySelector('.pre-photo');
+
+        if(student_photo) {
+            student_photo.onchange = (e) => {
+            const urlPhoto = URL.createObjectURL(e.target.files[0]);
+            pre_photo.setAttribute('src', urlPhoto)
+        }
+        }
+
+        // manage delete data 
+        const delete_btn = document.querySelectorAll('.delete_btn');
+
+        if(delete_btn ) {
+            delete_btn.forEach(item => {
+                item.onclick = (e) => {
+                   const conf =  confirm('Are You Sure');
+
+                    if(conf) {
+                        return true;
+                    } else{
+                        return false;
+                    }
+                    
+                }
+            });
+        }
+
+      
+
+
+
+
+    </script>
+</body>
+</html>

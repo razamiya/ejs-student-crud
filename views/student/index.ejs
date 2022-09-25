@@ -1,0 +1,55 @@
+
+
+<div class="container  ">
+
+    <div class="row my-3 justify-content-center">
+        <div class="col-md-10">
+            <div class="addNewSttudent">
+                <a href="/student/create" class="btn btn-primary btn-sm">Add New Student</a>
+            </div>
+            <div class="card shadow my-3">
+                <div class="card-body">
+                    <h2>Student Data</h2>
+                    <table class=" table table-stripe soro-data-table ">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Name</td>
+                                    <td>Email</td>
+                                    <td>Phone</td>
+                                    <td>Location</td>
+                                    <td>Profile</td>
+                                    <td>Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% studentData.forEach((student, index) => { %>
+                                    <tr class="align-middle">
+                                        <td> <%= index + 1 %> </td>
+                                        <td><%= student.name %></td>
+                                        <td><%= student.email %></td>
+                                        <td><%= student.phone %></td>
+                                        <td><%= student.location %></td>
+
+                                        <td class="student-profile">
+                                            <% if (student.photo == 'avatar.png') { %>
+                                               <img src="/images/avatar.png" alt="">
+                                             <% } else { %>
+                                                <img src="/images/student/<%= student.photo %> " alt="">
+                                            <% } %>
+                                            
+                                        </td>
+                                        <td>
+                                            <a href="student/<%= student.id %> " class="btn btn-sm btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a href="/student/edit/<%= student.id %> " class="btn btn-sm btn-warning"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                            <a href="/student/delete/<%= student.id %> " class="btn btn-sm btn-danger"><i class="fa fa-trash delete_btn" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                                </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
